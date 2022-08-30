@@ -45,16 +45,43 @@ class PokemonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-      padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(20)),
         color: getColor(),
       ),
-      child: Column(
+      child: Row(
         children: [
-          Text(pokemon.name!),
-          Text(pokemon.type.toString()),
-          Text(pokemon.id.toString())
+          Container(
+            width: MediaQuery.of(context).size.width/4,
+            margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            decoration: BoxDecoration(
+              color: Color.fromARGB(64, 255, 255, 255),
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+            ),
+            child: Image.network(pokemon.img!),
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width / 2,
+                  padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                  margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    color: Color.fromARGB(186, 255, 255, 255),
+                  ),
+                  child: Text(
+                    pokemon.name!,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
