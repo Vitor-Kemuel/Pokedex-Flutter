@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokeflutter/Common/Model/pokemon.dart';
+import 'package:pokeflutter/Common/Widgets/PokemonCard/pokemon_card.dart';
 
 class PokemonList extends StatelessWidget {
   const PokemonList({Key? key, required this.pokemonList}) : super(key: key);
@@ -13,7 +14,8 @@ class PokemonList extends StatelessWidget {
       body: ListView.builder(
         itemCount: pokemonList.length,
         itemBuilder: (BuildContext context, int index){
-          return Text(pokemonList[index].name!);
+          // return Text(pokemonList[index].name!);
+          return PokemonCard(pokemon: pokemonList[index]);
         },
       ),
     );
