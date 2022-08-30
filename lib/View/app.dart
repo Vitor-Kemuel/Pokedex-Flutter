@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:pokeflutter/View/PokemonList/pokemon_list.dart';
+import 'package:pokeflutter/Common/Services/PokemonService/pokemon_repository.dart';
+import 'package:pokeflutter/Common/Widgets/PageSwitchContainer/page_switch_container.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -8,8 +10,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: PokemonList(),
+    return MaterialApp(
+      home: PageSwitchContainer(
+        pokemonRepository: PokemonRepository(
+          dio: Dio(),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
