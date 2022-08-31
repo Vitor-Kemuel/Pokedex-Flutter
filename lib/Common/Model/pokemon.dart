@@ -6,9 +6,6 @@ class PokemonModel {
   List<String>? type;
   String? height;
   String? weight;
-  String? candy;
-  int? candyCount;
-  String? egg;
   List<PrevEvolution>? prevEvolution;
   List<NextEvolution>? nextEvolution;
 
@@ -20,9 +17,6 @@ class PokemonModel {
     this.type,
     this.height,
     this.weight,
-    this.candy,
-    this.candyCount,
-    this.egg,
     this.prevEvolution,
     this.nextEvolution,
   });
@@ -35,9 +29,6 @@ class PokemonModel {
     type = pokemon['type'].cast<String>();
     height = pokemon['height'];
     weight = pokemon['weight'];
-    candy = pokemon['candy'];
-    candyCount = pokemon['candy_count'];
-    egg = pokemon['egg'];
     if (pokemon['prev_evolution'] != null) {
       prevEvolution = <PrevEvolution>[];
       pokemon['prev_evolution'].forEach((v) {
