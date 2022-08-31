@@ -1,3 +1,5 @@
+import 'package:pokeflutter/Common/Model/evolution.dart';
+
 class PokemonModel {
   int? id;
   String? num;
@@ -6,8 +8,8 @@ class PokemonModel {
   List<String>? type;
   String? height;
   String? weight;
-  List<PrevEvolution>? prevEvolution;
-  List<NextEvolution>? nextEvolution;
+  List<Evolution>? prevEvolution;
+  List<Evolution>? nextEvolution;
 
   PokemonModel({
     this.id,
@@ -30,40 +32,16 @@ class PokemonModel {
     height = pokemon['height'];
     weight = pokemon['weight'];
     if (pokemon['prev_evolution'] != null) {
-      prevEvolution = <PrevEvolution>[];
+      prevEvolution = <Evolution>[];
       pokemon['prev_evolution'].forEach((v) {
-        prevEvolution!.add(new PrevEvolution.fromMap(v));
+        prevEvolution!.add(Evolution.fromMap(v));
       });
     }
     if (pokemon['next_evolution'] != null) {
-      nextEvolution = <NextEvolution>[];
+      nextEvolution = <Evolution>[];
       pokemon['next_evolution'].forEach((v) {
-        nextEvolution!.add(new NextEvolution.fromMap(v));
+        nextEvolution!.add(Evolution.fromMap(v));
       });
     }
-  }
-}
-
-class PrevEvolution {
-  String? num;
-  String? name;
-
-  PrevEvolution({this.num, this.name});
-
-  PrevEvolution.fromMap(Map<String, dynamic> evolution) {
-    num = evolution['num'];
-    name = evolution['name'];
-  }
-}
-
-class NextEvolution {
-  String? num;
-  String? name;
-
-  NextEvolution({this.num, this.name});
-
-  NextEvolution.fromMap(Map<String, dynamic> evolution) {
-    num = evolution['num'];
-    name = evolution['name'];
   }
 }
