@@ -1,63 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:pokeflutter/Common/Model/pokemon.dart';
+import 'package:pokeflutter/Common/Services/Color/color.dart';
 
 class PokemonCard extends StatelessWidget {
-  final PokemonModel pokemon;
   const PokemonCard({
     Key? key,
     required this.pokemon,
   }) : super(key: key);
+  final PokemonModel pokemon;
 
   getColor() {
-    switch (pokemon.type![0]) {
-      case "Grass":
-        return Colors.lightGreen;
-      case "Fire":
-        return Colors.red;
-      case "Water":
-        return Colors.lightBlue;
-      case "Bug":
-        return Colors.brown;
-      case "Normal":
-        return Color.fromARGB(255, 212, 189, 210);
-      case "Poison":
-        return Colors.deepPurple;
-      case "Electric":
-        return Colors.amber;
-      case "Ground":
-        return Colors.lime;
-      case "Fighting":
-        return Color.fromARGB(255, 252, 255, 103);
-      case "Psychic":
-        return Color.fromARGB(52, 0, 0, 0);
-      case "Ice":
-        return Color.fromARGB(255, 100, 232, 255);
-      case "Rock":
-        return Color.fromARGB(255, 83, 83, 83);
-      case "Dragon":
-        return Color.fromARGB(239, 255, 94, 0);
-      default:
-        return Colors.white;
-    }
+    PokemonColor pokemonColor = PokemonColor();
+    return pokemonColor.getColor(pokemon.type![0]);
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+      margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: const BorderRadius.all(Radius.circular(15)),
         color: getColor(),
       ),
       child: Row(
         children: [
           Container(
-            width: MediaQuery.of(context).size.width/4,
-            margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-            decoration: BoxDecoration(
-              color: Color.fromARGB(64, 255, 255, 255),
+            width: MediaQuery.of(context).size.width / 4,
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(90, 255, 255, 255),
               borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
             child: Image.network(pokemon.img!),
@@ -68,15 +39,50 @@ class PokemonCard extends StatelessWidget {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width / 2,
-                  padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                  margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                  margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(5)),
-                    color: Color.fromARGB(186, 255, 255, 255),
+                    color: Color.fromARGB(216, 255, 255, 255),
                   ),
                   child: Text(
                     pokemon.name!,
                     textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: pokemon.type!.map((e) {
+                      return Container(
+                        margin: const EdgeInsets.fromLTRB(5, 3, 5, 3),
+                        padding: const EdgeInsets.fromLTRB(2, 2, 2, 2),
+                        decoration: const BoxDecoration(
+                          color: Color.fromARGB(80, 255, 255, 255),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                        ),
+                        child: Text(
+                          e,
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width / 4,
+                  padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                  margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    color: Color.fromARGB(125, 255, 255, 255),
+                  ),
+                  child: Text(
+                    pokemon.num!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
               ],
