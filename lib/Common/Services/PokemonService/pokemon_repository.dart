@@ -11,6 +11,7 @@ class PokemonRepository implements IPokemonRepository {
     required this.dio,
   });
 
+  @override
   Future<List<PokemonModel>> getAllPokemonsAPI() async {
     try {
       final response = await dio.get(PokeApiConsts.allPokemonsURL);
@@ -21,7 +22,7 @@ class PokemonRepository implements IPokemonRepository {
           .map((pokemon) => PokemonModel.fromMap(pokemon))
           .toList();
     } catch (e) {
-      throw ApiError(message: "ocorreu um erro");
+      throw ApiError(message: "Erro ao carregar dados");
     }
   }
 }

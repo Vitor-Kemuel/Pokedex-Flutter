@@ -48,7 +48,9 @@ class PokemonCard extends StatelessWidget {
                   child: Text(
                     pokemon.name!,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -82,7 +84,9 @@ class PokemonCard extends StatelessWidget {
                   child: Text(
                     pokemon.num!,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ],

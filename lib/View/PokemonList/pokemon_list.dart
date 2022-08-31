@@ -27,9 +27,9 @@ class PokemonList extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: ((context) => PokemonInfo(
-                        pokemon: pokemonList[index],
-                      )),
+                  builder: (context) => PokemonInfo(
+                    pokemon: pokemonList[index],
+                  ),
                 ),
               );
             },

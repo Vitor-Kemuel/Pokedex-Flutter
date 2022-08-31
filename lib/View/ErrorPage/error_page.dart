@@ -11,6 +11,7 @@ class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 109, 109, 109),
       appBar: const CustomAppBar(
         title: "Pokedex",
       ),
@@ -18,6 +19,7 @@ class ErrorPage extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.fromLTRB(20, 40, 20, 40),
           decoration: BoxDecoration(
+            color: Colors.white,
             border: Border.all(
               color: Colors.red,
               style: BorderStyle.solid,
