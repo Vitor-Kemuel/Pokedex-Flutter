@@ -24,7 +24,6 @@ class PageSwitchContainer extends StatelessWidget {
 
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
-          print(snapshot.data);
           return PokemonList(pokemonList: snapshot.data!);
         }
 
